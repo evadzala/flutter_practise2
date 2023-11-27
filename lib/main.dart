@@ -14,11 +14,17 @@ class DemoApp extends StatelessWidget {
         appBar: AppBar(
           title: const Text("Header"),
         ),
-        body: const Center(
-          child: Text("Body"),
-        ),
+        body: Center(
+            child: ElevatedButton(
+          onPressed: onPressed,
+          child: const Text("Button"),
+        )),
       ),
     );
+  }
+
+  void onPressed() {
+    print("button");
   }
 }
 
