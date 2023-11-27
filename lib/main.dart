@@ -15,9 +15,16 @@ class DemoApp extends StatelessWidget {
           title: const Text("Header"),
         ),
         body: Center(
-            child: ElevatedButton(
-          onPressed: onPressed,
-          child: const Text("Button"),
+            child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            ElevatedButton(onPressed: onPressed, child: const Text("Button2")),
+            const Text(
+              "data",
+              textDirection: TextDirection.ltr,
+            )
+          ],
         )),
       ),
     );
