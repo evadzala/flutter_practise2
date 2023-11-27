@@ -9,23 +9,16 @@ class DemoApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-        color: Colors.blue,
-        alignment: Alignment.center,
-        child: const Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              "Hello world",
-              textDirection: TextDirection.ltr,
-            ),
-            Text(
-              "Hello world",
-              textDirection: TextDirection.ltr,
-            ),
-          ],
-        ));
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(
+          title: const Text("Header"),
+        ),
+        body: const Center(
+          child: Text("Body"),
+        ),
+      ),
+    );
   }
 }
 
