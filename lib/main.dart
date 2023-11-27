@@ -1,7 +1,46 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const DemoApp());
+  runApp(const DemoApp2());
+}
+
+class DemoApp2 extends StatefulWidget {
+  const DemoApp2({super.key});
+
+  @override
+  State<DemoApp2> createState() => _DemoApp2State();
+}
+
+class _DemoApp2State extends State<DemoApp2> {
+  int count = 0;
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(
+          title: const Text("Header"),
+        ),
+        body: Center(
+            child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            ElevatedButton(onPressed: onPressed, child: const Text("Button2")),
+            Text(
+              count.toString(),
+              textDirection: TextDirection.ltr,
+            )
+          ],
+        )),
+      ),
+    );
+  }
+
+  void onPressed() {
+    count++;
+    print("$count");
+  }
 }
 
 class DemoApp extends StatelessWidget {
