@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const DemoApp2());
+  runApp(const MaterialApp(
+    home: DemoApp2(),
+  ));
 }
 
 class DemoApp2 extends StatefulWidget {
@@ -12,34 +14,79 @@ class DemoApp2 extends StatefulWidget {
 }
 
 class _DemoApp2State extends State<DemoApp2> {
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+
   int count = 0;
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        appBar: AppBar(
-          title: const Text("Header"),
-        ),
-        body: Center(
+          appBar: AppBar(
+            title: const Text("Header"),
+          ),
+          body: Container(
+            margin: const EdgeInsets.all(20),
             child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            ElevatedButton(onPressed: onPressed, child: const Text("Button2")),
-            Text(
-              count.toString(),
-              textDirection: TextDirection.ltr,
-            )
-          ],
-        )),
-      ),
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                TextField(
+                  controller: emailController,
+                  decoration: const InputDecoration(hintText: "Email"),
+                ),
+                TextField(
+                  controller: passwordController,
+                  decoration: const InputDecoration(hintText: "Password"),
+                ),
+                ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => Page2(
+                                    email: emailController.text,
+                                    password: passwordController.text,
+                                  )));
+                    },
+                    child: const Text("Login"))
+              ],
+            ),
+          )),
     );
   }
 
   void onPressed() {
     count++;
-    print("$count");
+    print(emailController.text + passwordController.text);
+  }
+}
+
+class Page2 extends StatefulWidget {
+  String email;
+  String password;
+
+  Page2({Key? key, required this.email, required this.password})
+      : super(key: key);
+
+  @override
+  State<Page2> createState() => _Page2State();
+}
+
+class _Page2State extends State<Page2> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        appBar: AppBar(
+          title: const Text("Page2"),
+        ),
+        body: Container(
+          child: Column(children: [
+            Text("Email: ${widget.email}"),
+            Text("Password: ${widget.password}")
+          ]),
+        ));
   }
 }
 
